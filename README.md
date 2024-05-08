@@ -1,4 +1,4 @@
-### Trabalho de faculdade para gerenciamento de tráfego.
+### Gerenciamento de tráfego
 
 ## Descrição
 Foi solicitado que desenvolvêssemos uma API em Java. Dados alguns temas, escolhemos gerenciamento de tráfego. 
@@ -6,3 +6,4 @@ Foi solicitado que desenvolvêssemos uma API em Java. Dados alguns temas, escolh
 # Tecnologias utilizadas
 - Java 17
 - Oracle
+- Jdbc
