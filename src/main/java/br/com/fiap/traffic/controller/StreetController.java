@@ -9,35 +9,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class StreetController {
     @Autowired
     private StreetService streetService;
 
-    @PostMapping("street")
+    @PostMapping("/street")
     @ResponseStatus(HttpStatus.CREATED)
     public Street save(@RequestBody Street street){
         return streetService.save(street);
     }
 
-    @GetMapping("street")
+    @GetMapping("/street")
     @ResponseStatus(HttpStatus.OK)
     public List<Street> getAll(){
         return streetService.getAll();
     }
 
-    @GetMapping("street/{streetId}")
+    @GetMapping("/street/{streetId}")
     public Street findById(@PathVariable Long streetId){
         return streetService.findById(streetId);
     }
 
-    @DeleteMapping("street/{streetId}")
+    @DeleteMapping("/street/{streetId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long streetId){
         streetService.delete(streetId);
     }
 
-    @PutMapping("street")
+    @PutMapping("/street")
     @ResponseStatus(HttpStatus.OK)
     public Street update(@RequestBody Street street){
         return streetService.update(street);
