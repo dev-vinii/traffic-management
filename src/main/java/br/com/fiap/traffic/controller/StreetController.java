@@ -1,5 +1,6 @@
 package br.com.fiap.traffic.controller;
 
+import br.com.fiap.traffic.dto.StreetDTO;
 import br.com.fiap.traffic.model.Street;
 import br.com.fiap.traffic.service.StreetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,18 @@ public class StreetController {
 
     @PostMapping("/street")
     @ResponseStatus(HttpStatus.CREATED)
-    public Street save(@RequestBody Street street){
-        return streetService.save(street);
+    public StreetDTO save(@RequestBody StreetDTO streetDTO){
+        return streetService.save(streetDTO);
     }
 
     @GetMapping("/street")
     @ResponseStatus(HttpStatus.OK)
-    public List<Street> getAll(){
+    public List<StreetDTO> getAll(){
         return streetService.getAll();
     }
 
     @GetMapping("/street/{streetId}")
-    public Street findById(@PathVariable Long streetId){
+    public StreetDTO findById(@PathVariable Long streetId){
         return streetService.findById(streetId);
     }
 
