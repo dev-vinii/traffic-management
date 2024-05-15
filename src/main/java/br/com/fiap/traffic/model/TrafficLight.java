@@ -30,6 +30,4 @@ public class TrafficLight {
     @ManyToOne
     @JoinColumn(name = "street_id", referencedColumnName = "street_id", insertable = false, updatable = false)
     private Street street;
-    @Column(name = "street_id")
-    private Long streetId;
 }
