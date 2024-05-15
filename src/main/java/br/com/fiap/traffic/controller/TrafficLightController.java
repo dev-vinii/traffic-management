@@ -1,5 +1,6 @@
 package br.com.fiap.traffic.controller;
 
+import br.com.fiap.traffic.dto.TrafficLightDTO;
 import br.com.fiap.traffic.model.TrafficLight;
 import br.com.fiap.traffic.service.TrafficLightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,18 @@ public class TrafficLightController {
 
     @PostMapping("/trafficlight")
     @ResponseStatus(HttpStatus.CREATED)
-    public TrafficLight save(@RequestBody TrafficLight trafficLight){
-        return trafficLightService.saveTraficLight(trafficLight);
+    public TrafficLightDTO save(@RequestBody TrafficLightDTO trafficLightDTO){
+        return trafficLightService.saveTraficLight(trafficLightDTO);
     }
 
     @GetMapping("/trafficlight")
     @ResponseStatus(HttpStatus.OK)
-    public List<TrafficLight> getAll(){
+    public List<TrafficLightDTO> getAll(){
         return trafficLightService.getAll();
     }
 
     @GetMapping("/trafficlight/{trafficlightId}")
-    public TrafficLight findById(@PathVariable Long trafficLightId){
+    public TrafficLightDTO findById(@PathVariable Long trafficLightId){
         return trafficLightService.getById(trafficLightId);
     }
 
