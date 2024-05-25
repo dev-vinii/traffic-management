@@ -10,37 +10,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/trafficlight")
 public class TrafficLightController {
     @Autowired
     private TrafficLightService trafficLightService;
 
-    @PostMapping("/trafficlight")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TrafficLightDTO save(@RequestBody TrafficLightDTO trafficLightDTO){
         return trafficLightService.saveTraficLight(trafficLightDTO);
     }
 
-    @GetMapping("/trafficlight")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<TrafficLightDTO> getAll(){
+    public List<TrafficLight> getAll(){
         return trafficLightService.getAll();
     }
 
-    @GetMapping("/trafficlight/{trafficlightId}")
-    public TrafficLightDTO findById(@PathVariable Long trafficLightId){
+    @GetMapping("/{trafficLightId}")
+    public TrafficLight findById(@PathVariable Long trafficLightId){
         return trafficLightService.getById(trafficLightId);
     }
 
-    @DeleteMapping("/trafficlight/{trafficlightId}")
+    @DeleteMapping("/{trafficLightId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long trafficLightId){
         trafficLightService.deleteTrafficLight(trafficLightId);
     }
 
-    @PutMapping("/trafficlight")
+    @PutMapping("/{trafficLightId}")
     @ResponseStatus(HttpStatus.OK)
-    public TrafficLight update(@RequestBody TrafficLight trafficLight){
+    public TrafficLight update(@PathVariable Long trafficLightId, @RequestBody TrafficLight trafficLight){
+        trafficLight.setId(trafficLightId);
         return trafficLightService.updateTrafficLight(trafficLight);
     }
 }

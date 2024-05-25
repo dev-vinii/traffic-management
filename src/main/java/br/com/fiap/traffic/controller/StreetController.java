@@ -38,9 +38,9 @@ public class StreetController {
         streetService.delete(streetId);
     }
 
-    @PutMapping("/street")
+    @PutMapping("/street/{streetId}")
     @ResponseStatus(HttpStatus.OK)
-    public Street update(@RequestBody Street street){
-        return streetService.update(street);
+    public Street update(@PathVariable Long streetId, @RequestBody Street street){
+        return streetService.update(streetId, street);
     }
 }

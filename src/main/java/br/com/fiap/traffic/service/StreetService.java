@@ -48,9 +48,10 @@ public class StreetService {
         else throw new StreetException("Rua não encontrada!");
     }
 
-    public Street update(Street street) {
-        Optional<Street> streetOptional = streetRepository.findById(street.getId());
-
+    public Street update(Long id, Street street) {
+        Optional<Street> streetOptional = streetRepository.findById(id);
+        streetOptional.get().setCep(street.getCep());
+        streetOptional.get().setName(street.getName());
         if (streetOptional.isPresent()) return streetRepository.save(streetOptional.get());
         else throw new StreetException("Rua não encontrada!");
     }

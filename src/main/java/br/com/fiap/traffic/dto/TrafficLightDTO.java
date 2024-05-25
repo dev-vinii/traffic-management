@@ -10,7 +10,7 @@ public record TrafficLightDTO(
         boolean pedestrianTrafficLight,
         @NotBlank(message = "O marca não pode ser vazia")
         String brand,
-        StreetDTO street
+        Long streetId
 ) {
     public TrafficLightDTO(TrafficLight trafficLight) {
         this(
@@ -18,7 +18,7 @@ public record TrafficLightDTO(
                 trafficLight.getTimeToOpen(),
                 trafficLight.isPedestrianTrafficLight(),
                 trafficLight.getBrand(),
-                new StreetDTO(trafficLight.getStreet())
+                trafficLight.getStreet().getId()
         );
     }
 }
