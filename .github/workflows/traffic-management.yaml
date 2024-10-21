@@ -3,8 +3,8 @@ on:
     branches: develop
 
 env:
-  IMAGE_NAME: simple-api-java
-  AZURE_WEBAPP_NAME: simple-api-java
+  IMAGE_NAME: traffic-management
+  AZURE_WEBAPP_NAME: traffic-management
 
 jobs:
   build:
@@ -37,13 +37,12 @@ jobs:
     environment:
       name: 'dev'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
     steps:
-      - name: Deploy to Azure Web App
+      -
+        name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'traffic-management'
-          slot-name: 'production'
-          publish-profile: ${{ secrets.AZURE_PROFILE }}
-          images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/traffic-management:${{ github.sha }}'
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest'
